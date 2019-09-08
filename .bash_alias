@@ -1,0 +1,28 @@
+umask 666
+export DIR=~/.dirs
+function g() 
+{
+	if [ -f $DIR/$1 ]; then
+		cd `cat $DIR/$1`
+	fi
+}
+
+function s()
+{
+	echo `pwd` > $DIR/$1
+}
+
+function d()
+{
+	if [ -f $DIR/$1 ]; then
+		rm -f $DIR/$1
+	fi
+}
+
+function sl()
+{
+	for i in `ls $DIR`; do
+		echo "$i		 `cat $DIR/$i`"
+	done
+}
+
